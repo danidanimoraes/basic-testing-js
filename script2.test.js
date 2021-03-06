@@ -20,4 +20,20 @@ describe('swapi', () => {
             done();
         });
     });
+
+    it('getPeople with mock', () => {
+        const mockFetch = jest.fn().mockReturnValue(Promise.resolve({
+            json: () => Promise.resolve({
+                count: 23,
+                results: [0, 1, 2, 3, 4, 5]
+            })
+        }));
+        expect.assertions(4);
+        return swapi.getPeoplePromise(mockFetch).then(data => {
+            expect(mockFetch.mock.calls.length).toBe(1);
+            expect(mockFetch).toHaveBeenCalledWith('https://swapi.dev/api/people')
+            expect(data).toBeDefined();
+            expect(data.count).toBeGreaterThan(0);
+        })
+    })
 });
