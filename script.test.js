@@ -10,5 +10,5 @@ const dbMock = [
 ];
 
 it('test', () => {
-    googleSearch('testetsts')
+    googleSearch('testetsts', dbMock)
 })

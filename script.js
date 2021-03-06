@@ -9,11 +9,9 @@ const googleDatabase = [
     'dogsareawesome.com'
 ];
 
-const googleSearch = (searchInput) => {
-    const matches = googleDatabase.filter(website => website.includes(searchInput))
+const googleSearch = (searchInput, db) => {
+    const matches = db.filter(website => website.includes(searchInput))
     return matches.slice(0, 3);
 }
-
-console.log(googleSearch('dogs'));
 
 module.exports = googleSearch;
